@@ -11,7 +11,7 @@ body {
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
 
-  /* 🌸 your background */
+  /* 🌸 YOUR IMAGE */
   background: url('assets/1777185695083.png') no-repeat center/cover;
 
   display: flex;
@@ -20,48 +20,58 @@ body {
   text-align: center;
 }
 
-/* soft overlay */
+/* 🌫️ cinematic overlay */
 .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,0.3);
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.6)
+  );
 }
 
-/* main content */
+/* 💖 content */
 .content {
   position: relative;
   z-index: 2;
+  padding: 20px;
 }
 
-/* heading */
+/* 🎉 main heading */
 h1 {
-  font-size: 60px;
+  font-size: 50px;
   color: #ff4b7d;
-  text-shadow: 0 0 20px rgba(255,75,125,0.6);
+
+  text-shadow:
+    0 0 10px rgba(255,75,125,0.9),
+    0 0 20px rgba(255,75,125,0.7),
+    0 0 40px rgba(255,75,125,0.5);
+
   animation: pop 1.5s ease;
 }
 
-/* sub text */
+/* 💌 sub text */
 p {
   font-size: 20px;
-  color: #5a2a2a;
+  color: #ffffff;
   margin-top: 10px;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 
-/* pop animation */
+/* ✨ pop animation */
 @keyframes pop {
-  0% { transform: scale(0.5); opacity: 0; }
+  0% { transform: scale(0.6); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* confetti */
+/* 🎊 confetti */
 .confetti {
   position: absolute;
   width: 8px;
   height: 8px;
-  background: pink;
-  opacity: 0.7;
+  opacity: 0.8;
   animation: fall linear infinite;
 }
 
@@ -82,14 +92,17 @@ p {
 </div>
 
 <script>
-// 🎉 confetti effect
+// 🎉 Confetti animation
 for (let i = 0; i < 80; i++) {
   let c = document.createElement("div");
   c.className = "confetti";
 
   c.style.left = Math.random() * 100 + "vw";
   c.style.animationDuration = (3 + Math.random() * 3) + "s";
-  c.style.background = ["#ff4b7d","#ff8fa3","#ffc2d1","#ffccd5"][Math.floor(Math.random()*4)];
+
+  // soft aesthetic colors
+  let colors = ["#ff4b7d","#ff8fa3","#ffc2d1","#ffffff"];
+  c.style.background = colors[Math.floor(Math.random()*colors.length)];
 
   document.body.appendChild(c);
 }
