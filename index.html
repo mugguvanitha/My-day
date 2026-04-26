@@ -10,12 +10,10 @@ body {
   height: 100vh;
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
-
-  /* your image */
   background: url('assets/1777185695083.png') no-repeat center/cover;
 }
 
-/* soft dark overlay (makes text visible) */
+/* overlay */
 .overlay {
   position: absolute;
   width: 100%;
@@ -23,7 +21,7 @@ body {
   background: rgba(0,0,0,0.25);
 }
 
-/* top text container */
+/* top text */
 .content {
   position: absolute;
   top: 8%;
@@ -32,71 +30,40 @@ body {
   z-index: 2;
 }
 
-/* main heading */
 h1 {
   font-size: 42px;
   color: #ff6f91;
-  margin: 0;
-
-  /* soft glow */
-  text-shadow: 0 0 10px rgba(255,111,145,0.6);
-
-  animation: fadeIn 1.5s ease;
 }
 
-/* sub text */
 p {
-  font-size: 16px;
-  color: #ffffff;
-  margin-top: 6px;
-  text-shadow: 0 0 6px rgba(0,0,0,0.6);
-
-  animation: fadeIn 2s ease;
-}
-
-/* simple fade animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* floating hearts */
-.heart {
-  position: absolute;
-  color: #ff6f91;
-  font-size: 14px;
-  animation: floatUp linear infinite;
-  opacity: 0.7;
-}
-
-@keyframes floatUp {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-10vh); }
+  color: white;
 }
 </style>
 </head>
 
 <body>
 
+<!-- 🎵 AUDIO -->
+<audio id="bgMusic" loop>
+  <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
 <div class="overlay"></div>
 
 <div class="content">
-  <h1>Happy Birthday Pichi 🎉</h1>
-  <p>You make my world beautiful 💖</p>
+  <h1>Happy Birthday Pichi💖</h1>
 </div>
 
 <script>
-// 💖 floating hearts
-for (let i = 0; i < 30; i++) {
-  let h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "💖";
+let music = document.getElementById("bgMusic");
 
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.animationDuration = (4 + Math.random() * 4) + "s";
+// 👇 Start from middle (change this value)
+let startTime = 500; // seconds (you can change like 30, 50 etc)
 
-  document.body.appendChild(h);
-}
+document.addEventListener("click", function() {
+  music.currentTime = startTime;
+  music.play();
+});
 </script>
 
 </body>
